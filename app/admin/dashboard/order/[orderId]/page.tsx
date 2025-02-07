@@ -26,19 +26,16 @@ interface IOrder {
   orderDate: number;
   status: string | null;
   cartItems: ICartItem[];
-//   cartItems: {
-//     title: string;
-//     imageUrl: string;
-//   }[];
 }
 
-// This is a server component. If you need client-only interactivity, add "use client".
+interface OrderPageProps {
+  params: Promise<{ orderId: string }>;
+}
+
 export default async function OrderDetailPage({
   params,
-}: {
-  params: { orderId: string };
-}) {
-  const { orderId } = params;
+}:OrderPageProps) {
+  const { orderId } = await params;
 
   // Fetch the order data from Sanity based on orderId
   const order: IOrder | null = await client.fetch(
