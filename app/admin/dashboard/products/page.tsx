@@ -111,11 +111,11 @@ export default function AdminProductsPage() {
                     {product.inventory}
                   </td>
                   <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
-                    <Link href={`/dashboard/editProduct/${product._id}`}>
+                    {/* <Link href={`/dashboard/editProduct/${product._id}`}>
                       <button className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition">
                         Edit
                       </button>
-                    </Link>
+                    </Link> */}
                   </td>
                 </tr>
               ))
