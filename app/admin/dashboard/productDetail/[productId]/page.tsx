@@ -7,13 +7,13 @@ import { notFound } from "next/navigation";
 
 interface OrderPageProps {
   params: 
-  {productId : string};
+  Promise<{productId : string}>
 }
 
 export default async function OrderDetailPage({
   params,
 }: OrderPageProps) {
-  const { productId } =  params;
+  const { productId } = await params;
 
   // Fetch the order data from Sanity based on orderId
   const product: Product  = await client.fetch(`*[_type == "product" && slug.current == $productId][0]{
