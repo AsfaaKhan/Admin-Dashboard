@@ -148,10 +148,10 @@ export default function AdminDashboard() {
       {/* Orders List */}
       <div className="flex-1 p-4 overflow-auto">
         <h2 className="text-xl font-bold text-center mb-4">Orders</h2>
-        <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+        <div className="overflow-x-auto bg-white text-black rounded-lg shadow-md">
           <table className="min-w-max w-full text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="bg-gray-100 text-black">
                 <th className="px-4 py-2">First Name</th>
                 <th className="px-4 py-2">Last Name</th>
                 <th className="px-4 py-2">Address</th>
@@ -162,19 +162,19 @@ export default function AdminDashboard() {
                 <th className="px-4 py-2">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 ">
               {filterOrders.map((order) => (
                 <React.Fragment key={order._id}>
                   <tr
                     className="cursor-pointer hover:bg-gray-50 transition-all"
                   >
-                    <td className="px-4 py-2">{order.firstName}</td>
-                    <td className="px-4 py-2">{order.lastName}</td>
-                    <td className="px-4 py-2 truncate max-w-xs">{order.address}</td>
-                    <td className="px-4 py-2 ">{order.city}</td>
-                    <td className="px-4 py-2">{new Date(order.orderDate).toLocaleDateString()}</td>
-                    <td className="px-4 py-2">${order.total}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-2 text-black">{order.firstName}</td>
+                    <td className="px-4 py-2 text-black">{order.lastName}</td>
+                    <td className="px-4 py-2 text-black truncate max-w-xs">{order.address}</td>
+                    <td className="px-4 py-2 text-black ">{order.city}</td>
+                    <td className="px-4 py-2 text-black">{new Date(order.orderDate).toLocaleDateString()}</td>
+                    <td className="px-4 py-2 text-black">${order.total}</td>
+                    <td className="px-4 py-2 text-black">
                       <select
                         value={order.status || "pending"}
                         onChange={(e) => handleStatusChange(order._id, e.target.value)}

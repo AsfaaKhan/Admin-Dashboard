@@ -52,11 +52,11 @@ export default function AdminProductsPage() {
           Back to Dashboard
         </button>
       </Link>
-      <h1 className="text-2xl font-bold mb-4">All Products</h1>
+      <h1 className="text-2xl font-bold mb-4 text-black">All Products</h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full border-collapse border border-gray-200">
+        <table className="min-w-full border-collapse border border-gray-200 dark:border-gray-800">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 text-black">
               <th className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
                 Image
               </th>
@@ -104,24 +104,24 @@ export default function AdminProductsPage() {
                       />
                     )}
                   </td>
-                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
+                  <td className="text-black px-2 py-2 border border-gray-200 text-xs md:text-sm">
                     {product.title}
                   </td>
-                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm line-clamp-5">
+                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm line-clamp-5 text-black">
                     {product.description}
                   </td>
-                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
+                  <td className="px-2 py-2 border border-gray-200 text-xs text-black md:text-sm">
                     ${product.price}
                   </td>
-                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
+                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm text-black">
                     {product.category?.title || "N/A"}
                   </td>
-                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
+                  <td className="px-2 py-2 border text-black border-gray-200 text-xs md:text-sm">
                     {product.tags && product.tags.length > 0
                       ? product.tags.join(", ")
                       : "N/A"}
                   </td>
-                  <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">
+                  <td className="px-2 py-2 border text-black border-gray-200 text-xs md:text-sm">
                     {product.inventory}
                   </td>
                   <td className="px-2 py-2 border border-gray-200 text-xs md:text-sm">

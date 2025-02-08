@@ -75,7 +75,6 @@ export default function AddProductPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a data fetch
     setTimeout(() => {
       setLoading(false);
     }, 3000);
@@ -91,10 +90,10 @@ export default function AddProductPage() {
           Back to Dashboard
         </button>
       </Link>
-      <h2 className="text-2xl font-bold mb-4">Add Product</h2>
+      <h2 className="text-2xl font-bold mb-4 text-black">Add Product</h2>
       <form onSubmit={handleSubmit} className="space-y-4 max-w-lg">
         <div>
-          <label className="block font-semibold">Name</label>
+          <label className="block font-semibold text-black">Name</label>
           <input
             type="text"
             value={title}
@@ -103,7 +102,7 @@ export default function AddProductPage() {
           />
         </div>
         <div>
-          <label className="block font-semibold">Description</label>
+          <label className="block font-semibold text-black">Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -111,7 +110,7 @@ export default function AddProductPage() {
           ></textarea>
         </div>
         <div>
-          <label className="block font-semibold">Price</label>
+          <label className="block font-semibold text-black">Price</label>
           <input
             type="number"
             value={price === "" ? "" : price}
@@ -122,7 +121,7 @@ export default function AddProductPage() {
           />
         </div>
         <div>
-          <label className="block font-semibold">Upload Image</label>
+          <label className="block font-semibold text-black">Upload Image</label>
           <input
             type="file"
             accept="image/*"
@@ -132,7 +131,7 @@ export default function AddProductPage() {
         </div>
         <button
           type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded"
+          className=" bg-gray-700 hover:bg-gray-900  text-white  px-4 py-2 rounded"
         >
           Add Product
         </button>

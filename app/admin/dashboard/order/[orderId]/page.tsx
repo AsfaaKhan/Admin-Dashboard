@@ -71,27 +71,27 @@ export default async function OrderDetailPage({
           Back to Dashboard
         </button>
       </Link>
-      <h1 className="text-3xl font-bold my-6 ">Order Details</h1>
+      <h1 className="text-3xl font-bold my-6 text-black">Order Details</h1>
 
-      <div className="bg-white shadow-md p-4 rounded">
+      <div className="bg-white text-black shadow-md p-4 rounded">
         <h2 className="mt-4 text-xl sm:text-2xl font-extrabold border-b-2  mb-5">Customer Detail:</h2>
 
-        <p className="font-bold flex gap-2">
+        <p className="font-bold text-black flex gap-2">
           <strong >Customer Name:</strong> {order.firstName} {order.lastName}
         </p>
-        <p className="font-bold ">
+        <p className="font-bold  ">
           <strong>Address:</strong> {order.address}, {order.city}, {order.zipCode}
         </p>
-        <p className="font-bold gap-2">
+        <p className="font-bold text-black flex gap-2">
           <strong>Phone:</strong> {order.phone}
         </p>
-        <p className="font-bold">
+        <p className="font-bold text-black flex gap-2">
           <strong>Email:</strong> {order.email}
         </p>
-        <p className="font-bold">
+        <p className="font-bold text-black flex gap-2">
           <strong>Date:</strong> {new Date(order.orderDate).toLocaleDateString()}
         </p>
-        <h2 className="mt-7 text-xl sm:text-2xl font-extrabold border-b-2 mb-5">Product Detail:</h2>
+        <h2 className="mt-7 text-xl text-black sm:text-2xl font-extrabold border-b-2 mb-5">Product Detail:</h2>
         <ul>
           {order.cartItems.map((item, index) => (
             <li key={index} className="flex items-center gap-2 my-2">
@@ -104,10 +104,10 @@ export default async function OrderDetailPage({
                     height={50}
                   />
                 )}
-                <p className="flex gap-2 font-bold"> <strong>Item:</strong>{item.title}</p>
+                <p className="flex gap-2 font-bold text-black"> <strong>Item:</strong>{item.title}</p>
 
-                <p className="flex gap-2 font-bold"> <strong>Total Amount:</strong>${order.total}</p>
-                <p className="flex gap-2 font-bold"> <strong>Status:</strong>${order.status}</p>
+                <p className="flex gap-2 font-bold text-black"> <strong>Total Amount:</strong>${order.total}</p>
+                <p className="flex gap-2 font-bold text-black"> <strong>Status:</strong>${order.status}</p>
               </div>
             </li>
           ))}
