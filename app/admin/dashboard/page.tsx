@@ -147,7 +147,7 @@ export default function AdminDashboard() {
 
       {/* Orders List */}
       <div className="flex-1 p-4 overflow-auto">
-        <h2 className="text-xl font-bold text-center mb-4">Orders</h2>
+        <h2 className="text-xl font-bold text-center text-black   mb-4">Orders</h2>
         <div className="overflow-x-auto bg-white text-black rounded-lg shadow-md">
           <table className="min-w-max w-full text-sm">
             <thead>
