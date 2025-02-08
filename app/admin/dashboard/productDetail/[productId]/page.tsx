@@ -1,63 +1,38 @@
 
 import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
-import Image from "next/image";
+import { Product } from "@/types/Product";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 
-interface ICartItem {
-  title: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  imageUrl: any;
-}
-// Define the interface for an order. Adjust fields as needed.
-interface IOrder {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  phone: number;
-  email: string;
-  address: string;
-  city: string;
-  zipCode: string;
-  total: number;
-  discount: number;
-  orderDate: number;
-  status: string | null;
-  cartItems: ICartItem[];
-}
-
 interface OrderPageProps {
-  params: Promise<{ orderId: string }>;
+  params: 
+  {productId : string};
 }
 
 export default async function OrderDetailPage({
   params,
 }: OrderPageProps) {
-  const { orderId } = await params;
+  const { productId } =  params;
 
   // Fetch the order data from Sanity based on orderId
-  const order: IOrder | null = await client.fetch(
-    `*[_type == "order" && _id == $orderId][0]{
+  const product: Product  = await client.fetch(`*[_type == "product" && slug.current == $productId][0]{
         _id,
-        firstName,
-        lastName,
-        phone,
-        email,
-        address,
-        city,
-        zipCode,
-        total,
-        discount,
-        orderDate,
-        status,
-        cartItems[] -> { title, imageUrl }
+        title,
+        slug,
+        description,
+        imageUrl,
+        price,
+        tags,
+        dicountPercentage,
+        isNew,
+        inventory,
       }`,
-    { orderId }
+    { productId }
   );
+console.log(product);
 
-  if (!order) {
+  if (!product) {
     // If no order is found, show a 404 page.
     notFound();
   }
@@ -77,12 +52,19 @@ export default async function OrderDetailPage({
         <h2 className="mt-4 text-xl sm:text-2xl font-extrabold border-b-2  mb-5">Customer Detail:</h2>
 
         <p className="font-bold flex gap-2">
-          <strong >Customer Name:</strong> {order.firstName} {order.lastName}
+          <strong >Customer Name:</strong> {product.title} 
         </p>
         <p className="font-bold ">
-          <strong>Address:</strong> {order.address}, {order.city}, {order.zipCode}
+          <strong>Address:</strong>  {product.tags}
         </p>
-        <p className="font-bold gap-2">
+        
+      </div>
+    </div>
+  );
+}
+
+
+{/* <p className="font-bold gap-2">
           <strong>Phone:</strong> {order.phone}
         </p>
         <p className="font-bold">
@@ -111,8 +93,4 @@ export default async function OrderDetailPage({
               </div>
             </li>
           ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
+        </ul> */}

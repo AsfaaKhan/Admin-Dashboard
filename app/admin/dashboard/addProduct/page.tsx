@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Swal from "sweetalert2";
 import Link from "next/link";
+import Loader from "@/app/components/Loader";
 
 export default function AddProductPage() {
   const [title, setTitle] = useState("");
@@ -35,7 +36,7 @@ export default function AddProductPage() {
     e.preventDefault();
 
     // Validate that all fields are filled in and an image has been uploaded
-    if (!title|| !description || price === "" || !imageAssetRef) {
+    if (!title || !description || price === "" || !imageAssetRef) {
       Swal.fire("Error", "Please fill in all fields and upload an image", "error");
       return;
     }
@@ -70,10 +71,23 @@ export default function AddProductPage() {
     }
   };
 
+  // Loading Spinner
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a data fetch
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div className="p-4">
       <Link href="./">
-        <button className="mb-4 bg-blue-500 text-white px-4 py-2 rounded">
+        <button className="mb-4 bg-gray-700 hover:bg-gray-900  text-white px-4 py-2 rounded">
           Back to Dashboard
         </button>
       </Link>

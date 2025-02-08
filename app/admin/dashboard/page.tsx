@@ -4,6 +4,9 @@ import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { ImBin2 } from "react-icons/im";
+import { FaEye } from "react-icons/fa";
+import Loader from "@/app/components/Loader";
 
 // Define the interface for an order
 interface IOrder {
@@ -103,12 +106,30 @@ export default function AdminDashboard() {
     }
   };
 
+
+
+  // Loading Spinner
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+  if (loading) {
+    return <Loader />;
+  }
+
+  
+
   return (
     <ProtectedRoute>
     <div className="flex flex-col h-screen bg-gray-100">
       {/* Navbar */}
       <nav className="bg-gray-700 text-white p-4 shadow-md flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0">
-        <h2 className="text-2xl font-bold">Admin Dashboard</h2>
+        <div>
+        <h2 className="text-2xl font-bold ">Admin Dashboard</h2>
+
+        </div>
         <div className="flex flex-wrap gap-2">
           {["All", "pending", "success", "dispatch"].map((status) => (
             <button
@@ -170,13 +191,13 @@ export default function AdminDashboard() {
                           e.stopPropagation();
                           handleOrderDelete(order._id);
                         }}
-                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 transition"
+                        className="text-red-500  px-3 py-1 rounded hover:text-red-700 flex items-center  text-center transition"
                       >
-                        Delete
+                       <ImBin2 size={15} / >
                       </button>
                       <Link href={`./dashboard/order/${order._id}`}>
-                        <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 transition">
-                          View
+                        <button className="text-blue-500  px-3 py-1 rounded hover:text-blue-700 transition">
+                          <FaEye size={15}/>
                         </button>
                       </Link>
                     </td>
@@ -188,6 +209,7 @@ export default function AdminDashboard() {
         </div>
       </div>
     </div>
+
     </ProtectedRoute>
   );
 }
